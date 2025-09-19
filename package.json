@@ -1,0 +1,31 @@
+{
+  "name": "payhub",
+  "version": "1.0.0",
+  "description": "Landing page PayHub",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./public/styles.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./public/styles.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delmardevlp/payhub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delmardevlp/payhub/issues"
+  },
+  "homepage": "https://github.com/delmardevlp/payhub#readme",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.13"
+  },
+  "dependencies": {
+    "fontsource-montserrat": "^4.0.0"
+  }
+}
