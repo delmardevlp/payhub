@@ -1,40 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NewPay - PayHub</title>
-    <link rel="icon" href="./assets/favicon.ico" />
+    <link rel="icon" href="./assets/favicon.ico " />
     <link rel="stylesheet" href="./styles.css" />
+
+    <style>
+      :root {
+        --dur: 300ms;
+        --e-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+        --e-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+      a,
+      button,
+      .card,
+      img,
+      .chip,
+      .link,
+      .nav-link {
+        transition: all var(--dur) var(--e-out);
+      }
+      .lift:hover {
+        transform: translateY(-2px);
+      }
+      .press:active {
+        transform: translateY(0) scale(0.98);
+      }
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 600ms var(--e-soft), transform 600ms var(--e-soft);
+        will-change: opacity, transform;
+      }
+      [data-reveal].in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
+
   <body class="font-sans">
-    <!-- HEADER / NAV -->
     <header class="bg-[#0f1115] text-slate-100">
       <nav
         class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4"
       >
-        <!-- Logo -->
         <a href="#" class="inline-flex items-center gap-2">
-          <img src="./assets/logo.svg" alt="NewPay PayHub" class="h-6 w-auto" />
+          <img src="./assets/logo.png" alt="NewPay PayHub" class="h-6 w-auto" />
         </a>
-
-        <!-- Links -->
         <ul class="hidden gap-8 text-sm md:flex">
-          <li><a class="hover:text-white/90" href="#oquee">O que é</a></li>
           <li>
-            <a class="hover:text-white/90" href="#ganhos">O que você ganha</a>
+            <a class="nav-link hover:text-white/90" href="#oquee">O que é</a>
           </li>
-          <li><a class="hover:text-white/90" href="#l1">Lorem Ipsum</a></li>
-          <li><a class="hover:text-white/90" href="#l2">Lorem Ipsum</a></li>
+          <li>
+            <a class="nav-link hover:text-white/90" href="#ganhos"
+              >O que você ganha</a
+            >
+          </li>
+          <li>
+            <a class="nav-link hover:text-white/90" href="#faq"
+              >Perguntas Frequentes</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
 
-    <!-- HERO -->
     <section class="relative overflow-hidden bg-[#0f1115]">
-      <!-- glow de fundo -->
       <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-        <!-- radial esquerda -->
         <div
           class="absolute -left-40 top-1/3 h-72 w-72 rounded-full blur-3xl opacity-30"
           style="
@@ -45,7 +92,6 @@
             );
           "
         ></div>
-        <!-- radial direita -->
         <div
           class="absolute -right-24 top-10 h-96 w-96 rounded-full blur-3xl opacity-25"
           style="
@@ -61,8 +107,7 @@
       <div
         class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24"
       >
-        <!-- Coluna ESQUERDA -->
-        <div class="text-slate-100">
+        <div class="text-slate-100 order-2 md:order-1" data-reveal>
           <h1 class="text-4xl font-bold leading-tight sm:text-5xl">
             O comércio nunca mais será o mesmo
           </h1>
@@ -70,14 +115,12 @@
             A Rede NewPay é a virada de chave que coloca seu negócio no centro
             das oportunidades mais quentes da sua cidade.
           </p>
-
           <div class="mt-8">
             <a
               href="#cta"
-              class="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-medium text-slate-900 shadow-lg ring-1 ring-black/5 transition hover:-translate-y-0.5 hover:shadow-md hover:shadow-orange-400/100 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/40"
+              class="press inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-medium text-slate-900 shadow-lg ring-1 ring-black/5 transition hover:-translate-y-0.5 hover:shadow-[0_18px_35px_-12px_rgba(255,255,255,.85)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/40"
             >
               Quero fazer parte da rede
-              <!-- seta -->
               <svg
                 class="h-4 w-4"
                 viewBox="0 0 20 20"
@@ -92,30 +135,26 @@
               </svg>
             </a>
           </div>
-
-          <!-- bullets / segmentos -->
           <div
             class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-400"
           >
-            <span>Clientes</span>
-            <span
+            <span>Clientes</span
+            ><span
               class="inline-block h-1.5 w-1.5 rounded-full bg-slate-400"
             ></span>
-            <span>Cupons</span>
-            <span
+            <span>Cupons</span
+            ><span
               class="inline-block h-1.5 w-1.5 rounded-full bg-slate-400"
             ></span>
-            <span>Sorteios</span>
-            <span
+            <span>Sorteios</span
+            ><span
               class="inline-block h-1.5 w-1.5 rounded-full bg-slate-400"
             ></span>
             <span>Leads</span>
           </div>
         </div>
 
-        <!-- Coluna DIREITA (imagem com vinheta recortada) -->
-        <figure class="relative">
-          <!-- moldura -->
+        <figure class="relative order-1 md:order-2" data-reveal>
           <div
             class="relative overflow-hidden rounded-3xl ring-1 ring-white/10 shadow-2xl"
           >
@@ -124,12 +163,10 @@
               alt="Comerciante utilizando maquininha"
               class="h-full w-full object-cover"
             />
-            <!-- vinheta / gradiente para integrar com o fundo -->
             <div
               class="pointer-events-none absolute inset-0 bg-gradient-to-l from-[#0f1115] via-transparent/20 to-transparent"
             ></div>
           </div>
-          <!-- brilho discreto no canto inferior direito (decorativo) -->
           <div
             class="pointer-events-none absolute -bottom-6 -right-6 h-24 w-24 rounded-full bg-amber-400/20 blur-2xl"
             aria-hidden="true"
@@ -138,9 +175,53 @@
       </div>
     </section>
 
-    <!-- O que é o PayHub (100vh + cards 340px) -->
+    <!-- O que é o PayHub -->
     <section id="oquee" class="bg-[#0f1115] text-slate-100">
-      <!-- container ocupa 100vh e centraliza verticalmente -->
+      <style>
+        /* estados do card */
+        .feature {
+          transition: background-color 260ms var(--e-out),
+            color 260ms var(--e-out), border-color 260ms var(--e-out);
+        }
+        .feature .desc-alt {
+          display: none;
+        }
+        .feature .icon-active {
+          display: none;
+        }
+        .feature .arrow {
+          transition: transform var(--dur) var(--e-out),
+            background-color var(--dur) var(--e-out);
+        }
+
+        .feature.is-active {
+          background: #fb923c !important;
+          color: #fff !important;
+          border-color: rgba(15, 17, 21, 0.12) !important;
+        }
+        .feature.is-active .text-default {
+          display: none;
+        }
+        .feature.is-active .desc-alt {
+          display: block;
+        }
+        .feature.is-active .icon-default {
+          display: none;
+        }
+        .feature.is-active .icon-active {
+          display: inline-flex;
+        }
+        .feature.is-active .muted {
+          color: #fff !important;
+          opacity: 0.75;
+        }
+        .feature.is-active .arrow {
+          background: #fff !important;
+          color: #fb923c !important;
+          transform: rotate(45deg);
+        }
+      </style>
+
       <div
         class="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-4 py-16"
       >
@@ -149,55 +230,82 @@
           <p class="mt-4 text-slate-300">
             Enquanto outros comerciantes ainda estão tentando adivinhar onde
             estão os clientes, a Rede NewPay entrega uma base real, validada e
-            pronta para comprar. É como ter acesso a um clube secreto de
-            oportunidades.
+            pronta para comprar.
           </p>
         </header>
 
-        <!-- Grid de features: mesma altura em todas as colunas -->
+        <!-- Grid -->
         <div
           class="mt-12 grid w-full items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
+          <!-- CARD 1 -->
           <article
-            class="group relative min-h-[340px] rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 shadow-lg"
+            class="feature group relative min-h-[340px] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg"
           >
-            <!-- reserva espaço pro botão (9 = h-9 + bordas + gap ≈ 36px) -->
             <div class="flex h-full flex-col pb-14">
               <div class="flex flex-col">
+                <!-- Ícone (troca no estado ativo) -->
                 <div
                   class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10"
                 >
-                  <!-- ícone -->
-                  <svg
-                    class="h-6 w-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M10 13a5 5 0 0 0 7.07 0l1.83-1.83a5 5 0 1 0-7.07-7.07L10 5"
-                    />
-                    <path
-                      d="M14 11a5 5 0 0 0-7.07 0L5.1 12.83a5 5 0 0 0 7.07 7.07L14 19"
-                    />
-                  </svg>
+                  <!-- Ícone padrão -->
+                  <span class="icon-default">
+                    <!-- link -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                      />
+                      <path
+                        d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                      />
+                    </svg>
+                  </span>
+                  <!-- Ícone ativo (ex.: check) -->
+                  <span class="icon-active text-[#fff]">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                  </span>
                 </div>
+
                 <h3 class="mt-3 text-lg font-semibold">Leads Validados</h3>
               </div>
 
-              <!-- descrição empurrada pra baixo, mas sem colidir com a seta -->
-              <p class="mt-auto pt-4 text-sm leading-relaxed text-slate-300">
+              <!-- Descrição padrão -->
+              <p
+                class="text-default mt-auto pt-4 text-sm leading-relaxed text-slate-300"
+              >
                 Contatos de clientes reais, que já demonstraram interesse e
                 estão prontos para consumir.
               </p>
+              <!-- Descrição alternativa (aparece quando ativo) -->
+              <p class="desc-alt mt-auto pt-4 text-sm leading-relaxed muted">
+                Por meio de cupons e sorteios, você recebe uma lista priorizada
+                para abordar primeiro quem tem maior chance de fechar.
+              </p>
             </div>
 
-            <!-- seta permanece fixa no canto -->
-            <a
-              href="#cta"
-              class="absolute left-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow ring-1 ring-black/5 transition hover:scale-105 hover:bg-white"
-              aria-label="Saiba mais"
+            <!-- Botão/Seta -->
+            <button
+              type="button"
+              class="arrow absolute left-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow ring-1 ring-black/5 hover:scale-105"
+              aria-label="Alternar card"
             >
               <svg
                 class="h-5 w-5"
@@ -208,48 +316,73 @@
               >
                 <path d="M7 17L17 7M7 7h10v10" />
               </svg>
-            </a>
+            </button>
           </article>
+
+          <!-- CARD 2 -->
           <article
-            class="group relative min-h-[340px] rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 shadow-lg"
+            class="feature group relative min-h-[340px] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg"
           >
-            <!-- reserva espaço pro botão (9 = h-9 + bordas + gap ≈ 36px) -->
             <div class="flex h-full flex-col pb-14">
               <div class="flex flex-col">
                 <div
                   class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10"
                 >
-                  <!-- ícone -->
-                  <svg
-                    class="h-6 w-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M10 13a5 5 0 0 0 7.07 0l1.83-1.83a5 5 0 1 0-7.07-7.07L10 5"
-                    />
-                    <path
-                      d="M14 11a5 5 0 0 0-7.07 0L5.1 12.83a5 5 0 0 0 7.07 7.07L14 19"
-                    />
-                  </svg>
+                  <span class="icon-default">
+                    <!-- jornal -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M15 18h-5" />
+                      <path d="M18 14h-8" />
+                      <path
+                        d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"
+                      />
+                      <rect width="8" height="4" x="10" y="6" rx="1" />
+                    </svg>
+                  </span>
+                  <span class="icon-active text-[#0f1115]">
+                    <!-- alvo -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="8" />
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v2M12 20v2M2 12h2M20 12h2" />
+                    </svg>
+                  </span>
                 </div>
-                <h3 class="mt-3 text-lg font-semibold">Leads Validados</h3>
+                <h3 class="mt-3 text-lg font-semibold">Campanhas Prontas</h3>
               </div>
 
-              <!-- descrição empurrada pra baixo, mas sem colidir com a seta -->
-              <p class="mt-auto pt-4 text-sm leading-relaxed text-slate-300">
-                Contatos de clientes reais, que já demonstraram interesse e
-                estão prontos para consumir.
+              <p
+                class="text-default mt-auto pt-4 text-sm leading-relaxed text-slate-300"
+              >
+                Modelos de campanhas já estruturadas para lançar sem dor de
+                cabeça.
+              </p>
+              <p class="desc-alt mt-auto pt-4 text-sm leading-relaxed muted">
+                Ligue campanhas com 1 clique: copies, criativos e sequência de
+                disparo incluídos.
               </p>
             </div>
 
-            <!-- seta permanece fixa no canto -->
-            <a
-              href="#cta"
-              class="absolute left-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow ring-1 ring-black/5 transition hover:scale-105 hover:bg-white"
-              aria-label="Saiba mais"
+            <button
+              type="button"
+              class="arrow absolute left-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow ring-1 ring-black/5 hover:scale-105"
+              aria-label="Alternar card"
             >
               <svg
                 class="h-5 w-5"
@@ -260,48 +393,72 @@
               >
                 <path d="M7 17L17 7M7 7h10v10" />
               </svg>
-            </a>
+            </button>
           </article>
+
+          <!-- CARD 3 -->
           <article
-            class="group relative min-h-[340px] rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 shadow-lg"
+            class="feature group relative min-h-[340px] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg"
           >
-            <!-- reserva espaço pro botão (9 = h-9 + bordas + gap ≈ 36px) -->
             <div class="flex h-full flex-col pb-14">
               <div class="flex flex-col">
                 <div
                   class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10"
                 >
-                  <!-- ícone -->
-                  <svg
-                    class="h-6 w-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M10 13a5 5 0 0 0 7.07 0l1.83-1.83a5 5 0 1 0-7.07-7.07L10 5"
-                    />
-                    <path
-                      d="M14 11a5 5 0 0 0-7.07 0L5.1 12.83a5 5 0 0 0 7.07 7.07L14 19"
-                    />
-                  </svg>
+                  <span class="icon-default">
+                    <!-- book -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M12 7v14" />
+                      <path
+                        d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="icon-active text-[#0f1115]">
+                    <!-- share -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="18" cy="5" r="3" />
+                      <circle cx="6" cy="12" r="3" />
+                      <circle cx="18" cy="19" r="3" />
+                      <path d="M8.59 13.51l6.83 3.98M15.41 6.51L8.59 10.49" />
+                    </svg>
+                  </span>
                 </div>
-                <h3 class="mt-3 text-lg font-semibold">Leads Validados</h3>
+                <h3 class="mt-3 text-lg font-semibold">Catálogo Digital</h3>
               </div>
 
-              <!-- descrição empurrada pra baixo, mas sem colidir com a seta -->
-              <p class="mt-auto pt-4 text-sm leading-relaxed text-slate-300">
-                Contatos de clientes reais, que já demonstraram interesse e
-                estão prontos para consumir.
+              <p
+                class="text-default mt-auto pt-4 text-sm leading-relaxed text-slate-300"
+              >
+                Vitrine online dos seus produtos e serviços, compartilhável no
+                WhatsApp e redes sociais.
+              </p>
+              <p class="desc-alt mt-auto pt-4 text-sm leading-relaxed muted">
+                Gere link único com tudo pronto para compartilhar e medir
+                cliques.
               </p>
             </div>
 
-            <!-- seta permanece fixa no canto -->
-            <a
-              href="#cta"
-              class="absolute left-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow ring-1 ring-black/5 transition hover:scale-105 hover:bg-white"
-              aria-label="Saiba mais"
+            <button
+              type="button"
+              class="arrow absolute left-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow ring-1 ring-black/5 hover:scale-105"
+              aria-label="Alternar card"
             >
               <svg
                 class="h-5 w-5"
@@ -312,48 +469,72 @@
               >
                 <path d="M7 17L17 7M7 7h10v10" />
               </svg>
-            </a>
+            </button>
           </article>
+
+          <!-- CARD 4 -->
           <article
-            class="group relative min-h-[340px] rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 shadow-lg"
+            class="feature group relative min-h-[340px] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg"
           >
-            <!-- reserva espaço pro botão (9 = h-9 + bordas + gap ≈ 36px) -->
             <div class="flex h-full flex-col pb-14">
               <div class="flex flex-col">
                 <div
                   class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10"
                 >
-                  <!-- ícone -->
-                  <svg
-                    class="h-6 w-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M10 13a5 5 0 0 0 7.07 0l1.83-1.83a5 5 0 1 0-7.07-7.07L10 5"
-                    />
-                    <path
-                      d="M14 11a5 5 0 0 0-7.07 0L5.1 12.83a5 5 0 0 0 7.07 7.07L14 19"
-                    />
-                  </svg>
+                  <span class="icon-default">
+                    <!-- users -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                      <circle cx="9" cy="7" r="4" />
+                    </svg>
+                  </span>
+                  <span class="icon-active text-[#0f1115]">
+                    <!-- sparkles -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3z"
+                      />
+                      <path
+                        d="M19 16l.9 2.1L22 19l-2.1.9L19 22l-.9-2.1L16 19l2.1-.9L19 16z"
+                      />
+                    </svg>
+                  </span>
                 </div>
-                <h3 class="mt-3 text-lg font-semibold">Leads Validados</h3>
+                <h3 class="mt-3 text-lg font-semibold">Eventos e Networking</h3>
               </div>
 
-              <!-- descrição empurrada pra baixo, mas sem colidir com a seta -->
-              <p class="mt-auto pt-4 text-sm leading-relaxed text-slate-300">
-                Contatos de clientes reais, que já demonstraram interesse e
-                estão prontos para consumir.
+              <p
+                class="text-default mt-auto pt-4 text-sm leading-relaxed text-slate-300"
+              >
+                Palestras, treinamentos e encontros exclusivos para membros.
+              </p>
+              <p class="desc-alt mt-auto pt-4 text-sm leading-relaxed muted">
+                Conexões que aceleram parcerias e indicações qualificadas.
               </p>
             </div>
 
-            <!-- seta permanece fixa no canto -->
-            <a
-              href="#cta"
-              class="absolute left-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow ring-1 ring-black/5 transition hover:scale-105 hover:bg-white"
-              aria-label="Saiba mais"
+            <button
+              type="button"
+              class="arrow absolute left-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow ring-1 ring-black/5 hover:scale-105"
+              aria-label="Alternar card"
             >
               <svg
                 class="h-5 w-5"
@@ -364,33 +545,52 @@
               >
                 <path d="M7 17L17 7M7 7h10v10" />
               </svg>
-            </a>
+            </button>
           </article>
         </div>
       </div>
+
+      <script>
+        // Toggle de estado: seta alterna a classe .is-active no card
+        (() => {
+          document.querySelectorAll("#oquee .feature .arrow").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              e.preventDefault();
+              const card = btn.closest(".feature");
+              // Apenas um ativo por vez
+              document
+                .querySelectorAll("#oquee .feature.is-active")
+                .forEach(
+                  (el) => el !== card && el.classList.remove("is-active")
+                );
+              card.classList.toggle("is-active");
+            });
+          });
+        })();
+      </script>
     </section>
 
-    <!-- O que você ganha? (100vh, cards expansíveis) -->
-    <section id="ganhos" class="bg-[#121315] text-slate-100">
+    <section id="ganhos" class="bg-[#0f1115] text-slate-100">
       <div
         class="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 py-12"
       >
-        <h2 class="mb-6 text-3xl font-bold sm:text-4xl">O que você ganha?</h2>
+        <h2 class="mb-6 text-3xl font-bold sm:text-4xl" data-reveal>
+          O que você ganha?
+        </h2>
 
-        <!-- Grid: 4 colunas no lg para caber 2+1+1 na mesma linha -->
         <div
           id="gain-grid"
           class="grid items-stretch gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
           role="tablist"
           aria-label="Benefícios PayHub"
         >
-          <!-- CARD 1 -->
           <button
             type="button"
             data-card="0"
             role="tab"
             aria-selected="true"
-            class="gain-card group relative isolate overflow-hidden rounded-2xl border border-white/10 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 h-[360px] sm:h-[420px] w-full transition-all duration-300 ease-out lg:col-span-2"
+            data-reveal
+            class="gain-card lift press group relative isolate overflow-hidden rounded-2xl border border-white/10 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 h-[360px] sm:h-[420px] w-full transition-all duration-300 ease-out lg:col-span-2"
           >
             <img
               src="./assets/ganhos1.jpg"
@@ -403,7 +603,6 @@
             <div
               class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
             ></div>
-
             <div
               class="relative z-10 flex h-full flex-col justify-end p-4 sm:p-5"
             >
@@ -416,13 +615,13 @@
             </div>
           </button>
 
-          <!-- CARD 2 -->
           <button
             type="button"
             data-card="1"
             role="tab"
             aria-selected="false"
-            class="gain-card group relative isolate overflow-hidden rounded-2xl border border-white/10 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 h-[360px] sm:h-[420px] w-full transition-all duration-300 ease-out lg:col-span-1"
+            data-reveal
+            class="gain-card lift press group relative isolate overflow-hidden rounded-2xl border border-white/10 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 h-[360px] sm:h-[420px] w-full transition-all duration-300 ease-out lg:col-span-1"
           >
             <img
               src="./assets/ganhos2.jpg"
@@ -435,26 +634,25 @@
             <div
               class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
             ></div>
-
             <div
               class="relative z-10 flex h-full flex-col justify-end p-4 sm:p-5"
             >
               <p
                 class="extra hidden text-[13px] text-white/90 group-[.is-active]:block"
               >
-                Sua vitrine é o centro das atenções
+                Sua loja vira referência, visível onde importa.
               </p>
               <p class="mt-1 text-sm font-semibold">Desejo no mercado</p>
             </div>
           </button>
 
-          <!-- CARD 3 -->
           <button
             type="button"
             data-card="2"
             role="tab"
             aria-selected="false"
-            class="gain-card group relative isolate overflow-hidden rounded-2xl border border-white/10 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 h-[360px] sm:h-[420px] w-full transition-all duration-300 ease-out lg:col-span-1"
+            data-reveal
+            class="gain-card lift press group relative isolate overflow-hidden rounded-2xl border border-white/10 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 h-[360px] sm:h-[420px] w-full transition-all duration-300 ease-out lg:col-span-1"
           >
             <img
               src="./assets/ganhos3.jpg"
@@ -467,14 +665,13 @@
             <div
               class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
             ></div>
-
             <div
               class="relative z-10 flex h-full flex-col justify-end p-4 sm:p-5"
             >
               <p
                 class="extra hidden text-[13px] text-white/90 group-[.is-active]:block"
               >
-                Reconhecimento e autoridade na sua praça
+                Enquanto eles disputam preço, você conquista reconhecimento
               </p>
               <p class="mt-1 text-sm font-semibold">
                 Status entre concorrentes
@@ -484,27 +681,20 @@
         </div>
       </div>
 
-      <!-- Script: alterna o card ativo e spans de coluna no lg -->
       <script>
         (() => {
           const grid = document.getElementById("gain-grid");
           const cards = [...grid.querySelectorAll(".gain-card")];
-
-          let active = 0; // começa com o primeiro
+          let active = 0;
           function apply() {
             cards.forEach((el, i) => {
               const isActive = i === active;
-
-              // estado visual
               el.classList.toggle("is-active", isActive);
               el.setAttribute("aria-selected", isActive ? "true" : "false");
-
-              // coluna no lg: ativo = 2, inativos = 1
               el.classList.remove("lg:col-span-2", "lg:col-span-1");
               el.classList.add(isActive ? "lg:col-span-2" : "lg:col-span-1");
             });
           }
-
           cards.forEach((el, i) => {
             el.addEventListener("click", () => {
               active = i;
@@ -518,36 +708,28 @@
               }
             });
           });
-
           apply();
         })();
       </script>
     </section>
 
-    <!-- Perguntas Frequentes -->
     <section id="faq" class="bg-[#0f1115] text-slate-100">
       <div class="mx-auto max-w-7xl px-4 py-20">
         <div class="grid gap-8 md:grid-cols-12">
-          <!-- Título -->
-          <div class="md:col-span-5">
+          <div class="md:col-span-5" data-reveal>
             <h2 class="text-3xl font-bold sm:text-4xl leading-tight">
               Perguntas<br />Frequentes
             </h2>
           </div>
 
-          <!-- Lista -->
-          <div class="md:col-span-7">
+          <div class="md:col-span-7" data-reveal>
             <ul class="divide-y divide-white/15 border-t border-white/15">
-              <!-- Item -->
               <li>
                 <details class="group">
                   <summary
                     class="flex cursor-pointer items-center justify-between py-5 text-[15px] font-medium text-slate-200 hover:text-white"
                   >
-                    <span
-                      >Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit.</span
-                    >
+                    <span>O que eu ganho pagando apenas R$ 99 por mês?</span>
                     <svg
                       class="ml-4 h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-180"
                       viewBox="0 0 24 24"
@@ -559,8 +741,8 @@
                     </svg>
                   </summary>
                   <div class="pb-5 text-sm text-slate-300">
-                    Resposta curta explicando a dúvida com clareza. Adapte para
-                    seu produto/serviço.
+                    Leads validados, cupons, sorteios, treinamentos, eventos e
+                    muito mais para aumentar suas vendas.
                   </div>
                 </details>
               </li>
@@ -570,10 +752,7 @@
                   <summary
                     class="flex cursor-pointer items-center justify-between py-5 text-[15px] font-medium text-slate-200 hover:text-white"
                   >
-                    <span
-                      >Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit.</span
-                    >
+                    <span>Por que leads validados são importantes?</span>
                     <svg
                       class="ml-4 h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-180"
                       viewBox="0 0 24 24"
@@ -585,32 +764,8 @@
                     </svg>
                   </summary>
                   <div class="pb-5 text-sm text-slate-300">
-                    Outra resposta objetiva. Use bullets se precisar.
-                  </div>
-                </details>
-              </li>
-
-              <li>
-                <details class="group">
-                  <summary
-                    class="flex cursor-pointer items-center justify-between py-5 text-[15px] font-medium text-slate-2 00 hover:text-white"
-                  >
-                    <span
-                      >Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit.</span
-                    >
-                    <svg
-                      class="ml-4 h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-180"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </summary>
-                  <div class="pb-5 text-sm text-slate-300">
-                    Texto de apoio com links, prazos ou políticas.
+                    Porque você fala direto com quem já tem interesse real em
+                    comprar.
                   </div>
                 </details>
               </li>
@@ -620,10 +775,7 @@
                   <summary
                     class="flex cursor-pointer items-center justify-between py-5 text-[15px] font-medium text-slate-200 hover:text-white"
                   >
-                    <span
-                      >Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit.</span
-                    >
+                    <span>E se eu não entrar agora?</span>
                     <svg
                       class="ml-4 h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-180"
                       viewBox="0 0 24 24"
@@ -635,7 +787,30 @@
                     </svg>
                   </summary>
                   <div class="pb-5 text-sm text-slate-300">
-                    Detalhes finais. Se for longo, quebre em parágrafos curtos.
+                    Seus concorrentes pegam os clientes que poderiam ser seus.
+                  </div>
+                </details>
+              </li>
+
+              <li>
+                <details class="group">
+                  <summary
+                    class="flex cursor-pointer items-center justify-between py-5 text-[15px] font-medium text-slate-200 hover:text-white"
+                  >
+                    <span>O que torna a PayHub diferente?</span>
+                    <svg
+                      class="ml-4 h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-180"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </summary>
+                  <div class="pb-5 text-sm text-slate-300">
+                    Aqui você tem clientes, conhecimento, eventos e rede de
+                    apoio em um só lugar.
                   </div>
                 </details>
               </li>
@@ -645,54 +820,45 @@
       </div>
     </section>
 
-    <!-- CTA Card -->
-    <section class="bg-[#111315] py-16">
+    <section id="cta-final" class="bg-[#111315] py-16">
       <div class="mx-auto max-w-6xl px-4">
         <div
           class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#f97316] to-[#fb923c] shadow-2xl ring-1 ring-black/10"
         >
           <div class="grid items-center gap-8 p-8 md:grid-cols-2 md:p-12">
-            <!-- Texto -->
-            <div class="text-white">
+            <div class="text-white" data-reveal>
               <h3 class="text-3xl font-bold leading-tight sm:text-4xl">
                 A decisão é sua.<br />Mas o tempo é agora.
               </h3>
               <p class="mt-3 max-w-xl text-white/90">
-                Você pode continuar sozinho, tentando encontrar clientes no
-                escuro… ou pode estar na Rede NewPay, onde os clientes desejam
-                estar com você.
+                Junte-se à Rede NewPay e coloque sua marca no centro das
+                oportunidades com leads qualificados espalhados por todo o
+                Ceará.
               </p>
-
               <div class="mt-8">
                 <a
-                  href="#cta"
-                  class="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-semibold text-slate-900 shadow-[0_10px_25px_-10px_rgba(255,255,255,.7)] ring-1 ring-white/60 transition hover:-translate-y-0.5 hover:shadow-[0_18px_35px_-12px_rgba(255,255,255,.85)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70"
+                  href="#contato"
+                  class="press inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-semibold text-slate-900 shadow-[0_10px_25px_-10px_rgba(255,255,255,.7)] ring-1 ring-white/60 transition hover:-translate-y-0.5 hover:shadow-[0_18px_35px_-12px_rgba(255,255,255,.85)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70"
                 >
-                  <span>🚀</span>
-                  <span>Entrar para a rede agora</span>
+                  <span>🚀</span><span>Entrar para a rede agora</span>
                 </a>
               </div>
             </div>
 
-            <!-- Blocos decorativos (lado direito) -->
-            <div class="relative h-48 md:h-64">
-              <!-- grid de 2x2 com curvas -->
-              <div
-                class="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-4 opacity-95"
-              >
-                <div class="rounded-3xl bg-white/15 backdrop-blur-[1px]"></div>
-                <div class="rounded-3xl bg-[#c2410c]/70"></div>
-                <div class="rounded-3xl bg-white/30"></div>
-                <div class="rounded-3xl bg-[#ef4444]/80"></div>
+            <div class="relative" data-reveal>
+              <div class="relative overflow-hidden">
+                <img
+                  src="./assets/mapa-brasil.png"
+                  alt="Mapa das cidades atendidas pela Rede NewPay"
+                  class="h-64 w-full object-contain sm:h-72 md:h-80 lg:h-96"
+                  loading="lazy"
+                />
               </div>
-              <!-- luz suave -->
               <div
-                class="pointer-events-none absolute -right-10 -bottom-10 h-48 w-48 rounded-full bg-white/40 blur-3xl"
+                class="pointer-events-none absolute -right-6 -bottom-6 h-24 w-24 rounded-full bg-white/40 blur-3xl"
               ></div>
             </div>
           </div>
-
-          <!-- detalhes de brilho/borda -->
           <div
             class="pointer-events-none absolute inset-0 ring-1 ring-white/20"
           ></div>
@@ -703,22 +869,18 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-[#0f1115] text-slate-300">
       <div class="mx-auto max-w-7xl px-4 py-12">
         <div class="grid gap-10 md:grid-cols-12 items-start">
-          <!-- Brand + Social -->
-          <div class="md:col-span-5">
+          <div class="md:col-span-5" data-reveal>
             <a href="#" class="inline-flex items-center gap-2">
               <img
-                src="./assets/logo-white.svg"
+                src="./assets/logo.png"
                 alt="NewPay PayHub"
                 class="h-8 w-auto"
               />
             </a>
-
             <div class="mt-6 flex items-center gap-4">
-              <!-- Instagram -->
               <a
                 href="#"
                 aria-label="Instagram"
@@ -736,7 +898,6 @@
                   <circle cx="12" cy="12" r="3.5"></circle>
                 </svg>
               </a>
-              <!-- WhatsApp -->
               <a
                 href="#"
                 aria-label="WhatsApp"
@@ -745,16 +906,13 @@
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M.5 24l1.7-6A11 11 0 1112 23a11 11 0 01-5.4-1.5L.5 24z"
-                    fill="currentColor"
                     opacity=".25"
                   />
                   <path
                     d="M12 4a8 8 0 00-6.9 12l-.9 3.3 3.3-.9A8 8 0 1012 4zm4.4 9.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.3-.1-.5.1s-.6.8-.7.9-.3.1-.5 0a6.5 6.5 0 01-1.9-1.2 7 7 0 01-1.3-1.7c-.1-.2 0-.3.1-.4l.3-.3c.1-.1.1-.2.2-.3 0-.1 0-.2 0-.3s-.5-1.3-.7-1.8c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.4.2-.6.4s-.8.8-.8 2 .9 2.4 1 2.6a10.7 10.7 0 003.9 3.5c.5.2 1 .4 1.3.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1c-.1-.1-.3-.2-.5-.3z"
-                    fill="currentColor"
                   />
                 </svg>
               </a>
-              <!-- Facebook -->
               <a
                 href="#"
                 aria-label="Facebook"
@@ -769,8 +927,7 @@
             </div>
           </div>
 
-          <!-- Links -->
-          <nav class="md:col-span-7 grid grid-cols-2 gap-8 text-sm">
+          <nav class="md:col-span-7 grid grid-cols-2 gap-8 text-sm" data-reveal>
             <ul class="space-y-4">
               <li class="text-slate-400">O que é</li>
               <li><a class="hover:text-white" href="#oquee">Lorem Ipsum</a></li>
@@ -793,7 +950,6 @@
         </div>
       </div>
 
-      <!-- bottom bar -->
       <div class="border-t border-white/10">
         <div
           class="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 text-xs text-slate-400"
@@ -810,5 +966,43 @@
         document.getElementById("year").textContent = new Date().getFullYear();
       </script>
     </footer>
+
+    <script>
+      (() => {
+        const els = document.querySelectorAll("[data-reveal]");
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in-view");
+            });
+          },
+          { threshold: 0.12 }
+        );
+        els.forEach((el) => obs.observe(el));
+      })();
+
+      (() => {
+        let byKeyboard = false;
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "Tab") byKeyboard = true;
+        });
+        window.addEventListener("mousedown", () => (byKeyboard = false));
+        document.addEventListener("focusin", (e) => {
+          if (byKeyboard)
+            e.target.classList?.add(
+              "outline-2",
+              "outline-offset-2",
+              "outline-white/60"
+            );
+        });
+        document.addEventListener("focusout", (e) => {
+          e.target.classList?.remove(
+            "outline-2",
+            "outline-offset-2",
+            "outline-white/60"
+          );
+        });
+      })();
+    </script>
   </body>
 </html>
